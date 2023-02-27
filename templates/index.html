@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conversión de video a MP3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js" integrity="sha512-LXdBxM9AZwnT+TnNtJfncq3N/7v/YZt+Qz1VRd3qggr9XfsJHkQ2zRazZYlO6o47DvOBL1wecpI6ysR8P/Pm2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+      socket.on('progress', function(data) {
+        var progress = document.getElementById('progress');
+        progress.innerHTML = data['data'];
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Conversión de video a MP3</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <input type="file" name="file"><br><br>
+      <input type="submit" value="Convertir a MP3">
+    </form>
+    <br>
+    <div id="progress"></div>
+  </body>
+</html>
